@@ -50,7 +50,7 @@ node('master') {
 
     branch = scm.branch
     environment = "staging"
-    services = scm.services
+//    services = scm.services
   } else {
     def userInput = load "${projectRoot}/devops/jenkins/stages/input/datahq.groovy"
     userInput.request(vars)
