@@ -1,8 +1,6 @@
 // By design the pipeline can only keep records of Serializable objects
 // If you still need to keep an intermediate variable with a non serializable object, you need to hide it into a method and annotate this method with @NonCPS
 // See https://cloudbees.zendesk.com/hc/en-us/articles/204972960-The-pipeline-even-if-successful-ends-with-java-io-NotSerializableException
-echo "HERAK!!!!!"
-
 @NonCPS
 def getLastBuildCause() {
   def causes = currentBuild.rawBuild.getCauses()
@@ -51,17 +49,15 @@ node('master') {
 
     branch = userInput.branch
     environment = userInput.environment
- //   services = userInput.services
   }
 
   // Set pipeline build name
   currentBuild.displayName = "${currentBuild.number}-${branch}"
 
-  currentBuild.description = """Services: ${services.join(', ')}
 Branch: ${branch}
 Environment: ${environment} """
 
-  vars.getBusinessServicesWorkspace(projectRoot)
+//  vars.getBusinessServicesWorkspace(projectRoot)
 
   stage "Checkout from repository"
   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${vars.credentialsId}", url: 'https://github.com/tfortunatov/jenkins.git']]])
