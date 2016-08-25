@@ -2,7 +2,7 @@ def getBranches = ("git ls-remote -t -h https://github.com/tfortunatov/jenkins.g
 return    getBranches.text.readLines()
          .collect { it.split()[1].replaceAll('refs/heads/', '')  }
          .unique()
-         .findAll { it.startsWith('<some more pattern>') }
+//         .findAll { it.startsWith('<some more pattern>') }
 
 /**
  * Defines pipeline branches
