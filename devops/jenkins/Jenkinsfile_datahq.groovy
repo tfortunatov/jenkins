@@ -68,3 +68,4 @@ Environment: ${environment} """
   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${vars.credentialsId}", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   stage 'Build application'
+}
