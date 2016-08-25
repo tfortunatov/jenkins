@@ -1,4 +1,4 @@
-def getBranches("git ls-remote -t -h https://github.com/tfortunatov/jenkins.git").execute()
+def getBranches = ("git ls-remote -t -h https://github.com/tfortunatov/jenkins.git").execute()
 this branches.text.readLines()
          .collect { it.split()[1].replaceAll('refs/heads/', '')  }
          .unique()
