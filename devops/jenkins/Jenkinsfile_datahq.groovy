@@ -100,6 +100,6 @@ Environment: ${environment} """
   input message: 'Run integration tests?', ok: 'Run'
   def tests = load "devops/jenkins/stages/run-tests/integration.groovy"
   tests.run(vars, services, projectRoot)
-
-}
 */
+}
+
