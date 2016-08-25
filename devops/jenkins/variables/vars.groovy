@@ -2,6 +2,7 @@
  * Defines pipeline branches
  * @return  branches for the dropdown list
 */
+@NonCPS
 def getBranches() {
 def gitURL = "https://github.com/tfortunatov/jenkins.git"
 def command = "git ls-remote -h "+ gitURL
