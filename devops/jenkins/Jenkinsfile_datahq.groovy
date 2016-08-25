@@ -37,12 +37,14 @@ node('master') {
   stage 'Input parameters'
   def branch = ""
   def environment = ""
+  def services = []
   if ( startedFromAnotherJob ) {
     def scm = load "${projectRoot}/devops/jenkins/stages/scm/datahq.groovy"
     scm.getSCMInfo(upstreamJobName, upstreamJobBuildNumber)
 
     branch = scm.branch
     environment = "staging"
+    services = scm.services
   } else {
     def userInput = load "${projectRoot}/devops/jenkins/stages/input/datahq.groovy"
     userInput.request(vars)
