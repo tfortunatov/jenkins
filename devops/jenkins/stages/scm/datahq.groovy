@@ -1,6 +1,7 @@
 def getSCMInfo(jobName, jobBuildNumber) {
   node('master') {
-    this.services = servicesFileHandler.text.trim().tokenize(',')
+    def branchFile = "/tmp/${jobName}_${jobBuildNumber}_business_branch"
+    def branchFileHandler = new File(branchFile)
     this.branch = branchFileHandler.text
   }
 }
