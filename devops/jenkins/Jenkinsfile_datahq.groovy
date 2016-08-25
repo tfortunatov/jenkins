@@ -60,7 +60,7 @@ Environment: ${environment} """
 //  vars.getBusinessServicesWorkspace(projectRoot)
 
   stage "Checkout from repository"
-  checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${vars.credentialsId}", url: 'https://github.com/tfortunatov/jenkins.git']]])
+  checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   stage 'Build application'
 }
