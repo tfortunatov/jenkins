@@ -26,7 +26,7 @@ echo "HERAK!!!!!"
     // See https://github.com/jenkinsci/pipeline-plugin/blob/master/TUTORIAL.md
     jobMatches = null
   }
-  checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${vars.credentialsId}", url: 'https://github.com/tfortunatov/jenkins.git']]])
+  checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   def projectRoot = pwd()
 echo "HERAK!!!!!"
