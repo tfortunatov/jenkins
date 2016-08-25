@@ -3,7 +3,7 @@
  * @return  branches for the dropdown list
 */ 
 def getBranches() {
-  def branchList = ['master', 'ci_with_slaves']
+  def branchList = ['master', 'devops']
   this.branches = branchList.join("\n")
 }
 
