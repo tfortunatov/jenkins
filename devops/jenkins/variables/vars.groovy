@@ -42,9 +42,5 @@ def getEnvironments() {
  * Defines storage options
  * @return  storage options
  */
-def getStorageOptions() {
-
-this.credentialsId = 80116385-8f9c-4d73-875b-95510e3ee8e9
-}
 
 return this;
