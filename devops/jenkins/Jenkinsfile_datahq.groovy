@@ -55,7 +55,7 @@ node('master') {
   currentBuild.displayName = "${currentBuild.number}-${branch}"
 
 Branch: ${branch}
-Environment: ${environment} """
+Environment: ${environment} ""
 
 
   stage "Checkout from repository"
