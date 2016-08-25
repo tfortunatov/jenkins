@@ -28,7 +28,7 @@ node('master') {
   checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "${vars.credentialsId}", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   def projectRoot = pwd()
-
+echo "HERAK!!!!!"
   // The ${JOB_NAME}@script is a workspace created by Jenkins when it downloads the Jenkinsfile.
   // We are forced to load classes from this workspace, because at this point the actual job workspace
   // might not exist
