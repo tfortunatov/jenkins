@@ -17,7 +17,6 @@ node('master') {
     startedFromAnotherJob = true
     jobMatches = buildCause =~ /(job)\/([a-zA-Z0-9-_]+)\/([0-9]+)/
     upstreamJobName = jobMatches[0][2]
-echo "HERAK!!!!!"
     upstreamJobBuildNumber = jobMatches[0][3]
     echo upstreamJobName
     echo upstreamJobBuildNumber
@@ -29,7 +28,6 @@ echo "HERAK!!!!!"
   checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   def projectRoot = pwd()
-echo "HERAK!!!!!"
   // The ${JOB_NAME}@script is a workspace created by Jenkins when it downloads the Jenkinsfile.
   // We are forced to load classes from this workspace, because at this point the actual job workspace
   // might not exist
@@ -41,14 +39,12 @@ echo "HERAK!!!!!"
   stage 'Input parameters'
   def branch = ""
   def environment = ""
-  def services = []
   if ( startedFromAnotherJob ) {
     def scm = load "${projectRoot}/devops/jenkins/stages/scm/datahq.groovy"
     scm.getSCMInfo(upstreamJobName, upstreamJobBuildNumber)
 
     branch = scm.branch
     environment = "staging"
-    services = scm.services
   } else {
     def userInput = load "${projectRoot}/devops/jenkins/stages/input/datahq.groovy"
     userInput.request(vars)
