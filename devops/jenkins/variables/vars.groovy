@@ -1,7 +1,13 @@
+def getBranches(git ls-remote -t -h https://github.com/tfortunatov/jenkins.git)
+this branches.text.readLines()
+         .collect { it.split()[1].replaceAll('refs/heads/', '')  }
+         .unique()
+         .findAll { it.startsWith('<some more pattern>') }
+
 /**
  * Defines pipeline branches
  * @return  branches for the dropdown list
-*/
+/
 @NonCPS
 def getBranches() {
 def gitURL = "https://github.com/tfortunatov/jenkins.git"
