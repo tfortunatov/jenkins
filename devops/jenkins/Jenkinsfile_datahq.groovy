@@ -63,7 +63,7 @@ node('master') {
   // Set pipeline build name
   currentBuild.displayName = "${currentBuild.number}-${branch}"
 
-  currentBuild.description = """Services: ${services.join(', ')}
+//  currentBuild.description = """Services: ${services.join(', ')}
 Branch: ${branch}
 Environment: ${environment} """
 
