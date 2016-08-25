@@ -6,7 +6,7 @@
 */
 
 // Add node
-node ('master'){
+node {
 /* 
    Add stages. In future we may add pipeline stage dependency feature to get 
    pipeline visualisation.
