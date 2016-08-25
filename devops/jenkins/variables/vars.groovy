@@ -15,8 +15,9 @@ if ( proc.exitValue() != 0 ) {
 def branchList = proc.in.text.readLines().collect {
     it.replaceAll(/[a-z0-9]*\trefs\/heads\//, '')
 }
-
-return branches = branchList.join("\n")
+println branchList
+//this.branches = branchList.join("\n")
+//return branches = branchList.join("\n")
 
 }
 
