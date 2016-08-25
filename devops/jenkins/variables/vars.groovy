@@ -1,5 +1,5 @@
 def getBranches = ("git ls-remote -t -h https://github.com/tfortunatov/jenkins.git").execute()
-this.getBranches.text.readLines()
+return    getBranches.text.readLines()
          .collect { it.split()[1].replaceAll('refs/heads/', '')  }
          .unique()
          .findAll { it.startsWith('<some more pattern>') }
