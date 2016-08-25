@@ -1,8 +1,8 @@
-/**
- * Proceeding with CI/CD process
- */
 def getSCMInfo(jobName, jobBuildNumber) {
   node('master') {
-echo 'Proceeding with CI/CD process'
+    this.services = servicesFileHandler.text.trim().tokenize(',')
+    this.branch = branchFileHandler.text
   }
 }
+
+return this;
