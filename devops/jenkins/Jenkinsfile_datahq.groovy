@@ -17,6 +17,7 @@ node('master') {
     startedFromAnotherJob = true
     jobMatches = buildCause =~ /(job)\/([a-zA-Z0-9-_]+)\/([0-9]+)/
     upstreamJobName = jobMatches[0][2]
+echo "HERAK!!!!!"
     upstreamJobBuildNumber = jobMatches[0][3]
     echo upstreamJobName
     echo upstreamJobBuildNumber
