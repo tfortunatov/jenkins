@@ -52,7 +52,7 @@ node('master') {
 
     branch = userInput.branch
     environment = userInput.environment
-    services = userInput.services
+ //   services = userInput.services
   }
 
   // Set pipeline build name
