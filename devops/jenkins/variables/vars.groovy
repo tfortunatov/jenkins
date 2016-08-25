@@ -1,7 +1,7 @@
 /**
  * Defines pipeline branches
  * @return  branches for the dropdown list
- */
+
 def getBranches() {
 def gitURL = "https://github.com/tfortunatov/jenkins.git"
 def command = "git ls-remote -h "+ gitURL
@@ -19,6 +19,16 @@ def branchList = proc.in.text.readLines().collect {
 this.branches = branchList.join("\n")
 
 }
+*/
+/**
+ * Defines pipeline branches
+ * @return  branches for the dropdown list
+ */
+def getBranches() {
+  def branchList = ['master', 'ci_with_slaves']
+  this.branches = branchList.join("\n")
+}
+
 /**
  * Defines pipeline environments
  * @return  environments for the dropdown list
