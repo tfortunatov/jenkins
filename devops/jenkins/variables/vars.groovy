@@ -3,7 +3,7 @@
  * @return  branches for the dropdown list
  */
 def getBranches() {
-def gitURL = "http://ssnitsarenko@crdqn1vdcrdwb35.infosolco.com:8082/scm/bits/datahq_data.git"
+def gitURL = "https://github.com/tfortunatov/jenkins.git"
 def command = "git ls-remote -h "+ gitURL
 def proc = command.execute()
 proc.waitFor()
