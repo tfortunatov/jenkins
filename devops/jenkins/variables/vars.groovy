@@ -1,42 +1,11 @@
-def getBranches = ("git ls-remote -t -h https://github.com/tfortunatov/jenkins.git").execute()
-return    getBranches.text.readLines()
-         .collect { it.split()[1].replaceAll('refs/heads/', '')  }
-         .unique()
-//         .findAll { it.startsWith('<some more pattern>') }
-
 /**
  * Defines pipeline branches
  * @return  branches for the dropdown list
-/
-@NonCPS
-def getBranches() {
-def gitURL = "https://github.com/tfortunatov/jenkins.git"
-def command = "git ls-remote -h "+ gitURL
-def proc = command.execute()
-proc.waitFor()
-
-if ( proc.exitValue() != 0 ) {
-    return proc.err.text
-}
-
-def branchList = proc.in.text.readLines().collect {
-    it.replaceAll(/[a-z0-9]*\trefs\/heads\//, '')
-}
-println branchList
-//this.branches = branchList.join("\n")
-//return branches = branchList.join("\n")
-
-}
-
-/**
- * Defines pipeline branches
- * @return  branches for the dropdown list
- 
+*/ 
 def getBranches() {
   def branchList = ['master', 'ci_with_slaves']
   this.branches = branchList.join("\n")
 }
-*/
 
 /**
  * Defines pipeline environments
