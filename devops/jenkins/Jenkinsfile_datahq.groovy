@@ -43,7 +43,7 @@ node('master') {
   stage 'Input parameters'
   def branch = ""
   def environment = ""
-  def services = []
+//  def services = []
   if ( startedFromAnotherJob ) {
     def scm = load "${projectRoot}/devops/jenkins/stages/scm/datahq.groovy"
     scm.getSCMInfo(upstreamJobName, upstreamJobBuildNumber)
@@ -57,7 +57,7 @@ node('master') {
 
     branch = userInput.branch
     environment = userInput.environment
-    services = userInput.services
+ //   services = userInput.services
   }
 
   // Set pipeline build name
@@ -75,8 +75,8 @@ checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], doGenerateSubmodu
 
  // checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
-/*  stage 'Build application'
-  def sources = load "devops/jenkins/stages/build/business-service.groovy"
+  stage 'Build application'
+/*  def sources = load "devops/jenkins/stages/build/business-service.groovy"
   sources.build(vars, services)
 
   stage 'Check code with sonar'
