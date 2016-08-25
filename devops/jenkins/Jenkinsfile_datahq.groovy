@@ -26,13 +26,19 @@ node('master') {
   checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   def projectRoot = pwd()
+
   // The ${JOB_NAME}@script is a workspace created by Jenkins when it downloads the Jenkinsfile.
   // We are forced to load classes from this workspace, because at this point the actual job workspace
   // might not exist
   def vars = load "${projectRoot}/devops/jenkins/variables/vars.groovy"
+//  vars.getCloudPlatform()
+//  vars.getBusinessServicesWorkspace(projectRoot)
   vars.getBranches()
   vars.getEnvironments()
-  vars.getStorageOptions()
+//  vars.getBusinessServices()
+//  vars.getToolsLocations()
+//  vars.getToolsOptions(projectRoot)
+//  vars.getStorageOptions()
 
   stage 'Input parameters'
   def branch = ""
@@ -51,17 +57,49 @@ node('master') {
 
     branch = userInput.branch
     environment = userInput.environment
+    services = userInput.services
   }
 
   // Set pipeline build name
   currentBuild.displayName = "${currentBuild.number}-${branch}"
 
+  currentBuild.description = """Services: ${services.join(', ')}
 Branch: ${branch}
 Environment: ${environment} """
 
+ // vars.getBusinessServicesWorkspace(projectRoot)
 
   stage "Checkout from repository"
   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
 
-  stage 'Build application'
+/*  stage 'Build application'
+  def sources = load "devops/jenkins/stages/build/business-service.groovy"
+  sources.build(vars, services)
+
+  stage 'Check code with sonar'
+  def code = load "devops/jenkins/stages/code-quality/business-service.groovy"
+  code.check(vars, services)
+
+  stage 'Build docker image'
+  def docker = load "devops/jenkins/stages/build-image/business-service.groovy"
+  docker.buildImage(vars, services)
+
+  stage 'Push to registry'
+  def registry = load "devops/jenkins/stages/upload-image/business-service.groovy"
+  registry.push(vars, services)
+
+  stage 'Update database'
+  def database = load "devops/jenkins/stages/update-database/${vars.platform}/business-service.groovy"
+  database.update(environment, services)
+
+  stage 'Deploy service'
+  def service = load "devops/jenkins/stages/deploy-service/${vars.platform}/business-service.groovy"
+  service.deploy(environment, services)
+
+  stage 'Run tests'
+  input message: 'Run integration tests?', ok: 'Run'
+  def tests = load "devops/jenkins/stages/run-tests/integration.groovy"
+  tests.run(vars, services, projectRoot)
+
 }
+*/
