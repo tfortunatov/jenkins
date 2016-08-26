@@ -8,3 +8,4 @@ def build() {
   sh "source devops/jenkins/scripts/setenv.sh"
   sh "echo $LIBPATH"
 }
+return this;
