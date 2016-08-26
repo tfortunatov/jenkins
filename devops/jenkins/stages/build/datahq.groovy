@@ -4,7 +4,7 @@
  * @param   services    applications to work with
  * @see     populateTasks
  */
-def build(vars) {
+def build() {
   sh "source devops/jenkins/scripts/setenv.sh"
   sh "echo $LIBPATH"
 }
