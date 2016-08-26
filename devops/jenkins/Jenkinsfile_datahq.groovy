@@ -74,9 +74,9 @@ node('master') {
 // checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '80116385-8f9c-4d73-875b-95510e3ee8e9', url: 'https://github.com/tfortunatov/jenkins.git']]])
 
   checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "80116385-8f9c-4d73-875b-95510e3ee8e9", url: 'https://github.com/tfortunatov/jenkins.git']]])
-echo "HERAK!"
   stage 'Build application'
-  sh "ls -la"
+  def sources = load "devops/jenkins/stages/build/datahq.groovy"
+  sources.build(vars)
 /*  def sources = load "devops/jenkins/stages/build/business-service.groovy"
   sources.build(vars, services)
 
