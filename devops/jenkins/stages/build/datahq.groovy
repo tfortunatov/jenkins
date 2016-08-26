@@ -7,6 +7,6 @@
 def build() {
   sh "chmod 755 devops/jenkins/scripts/setenv.sh"
   sh "devops/jenkins/scripts/setenv.sh"
-  sh "echo $LIBPATH"
+  sh "echo $SOURCE_HOME"
 }
 return this;
