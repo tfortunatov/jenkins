@@ -5,6 +5,7 @@
  * @see     populateTasks
  */
 def build() {
+  sh "chmod 755 devops/jenkins/scripts/setenv.sh"
   sh "devops/jenkins/scripts/setenv.sh"
   sh "echo $LIBPATH"
 }
