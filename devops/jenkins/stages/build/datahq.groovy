@@ -7,3 +7,4 @@
 def build(vars) {
   sh "source devops/jenkins/scripts/setenv.sh"
   sh "echo $LIBPATH"
+}
