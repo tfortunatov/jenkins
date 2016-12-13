@@ -69,7 +69,7 @@ node('master') {
 
  // vars.getBusinessServicesWorkspace(projectRoot)
 
-  
+
   stage "Checkout from repository"
 // checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '80116385-8f9c-4d73-875b-95510e3ee8e9', url: 'https://github.com/tfortunatov/jenkins.git']]])
 
@@ -77,6 +77,10 @@ node('master') {
   stage 'Build application'
   def sources = load "devops/jenkins/stages/build/datahq.groovy"
   sources.build()
+
+
+
+
 /*  def sources = load "devops/jenkins/stages/build/business-service.groovy"
   sources.build(vars, services)
 
@@ -106,4 +110,3 @@ node('master') {
   tests.run(vars, services, projectRoot)
 */
 }
-
